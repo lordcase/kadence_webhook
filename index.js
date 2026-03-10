@@ -64,7 +64,7 @@ app.post("/webhook", async (req, res) => {
     minute: "2-digit",
     second: "2-digit",
   });
-  data["Dátum"] = now;
+  data["Date"] = now;
 
   console.log("📩  Received webhook:", JSON.stringify(data));
 
