@@ -61,7 +61,7 @@ export async function appendRow(spreadsheetId, sheetName, data) {
   const res = await sheetsClient.spreadsheets.values.append({
     spreadsheetId,
     range: `${sheetName}!A:A`,
-    valueInputOption: "USER_ENTERED",
+    valueInputOption: "RAW",
     insertDataOption: "INSERT_ROWS",
     requestBody: {
       values: [row],
