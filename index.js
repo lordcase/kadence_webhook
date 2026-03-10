@@ -53,6 +53,18 @@ app.post("/webhook", async (req, res) => {
     return res.status(400).json({ error: "Empty or invalid payload" });
   }
 
+  // Auto-inject timestamp (Budapest time)
+  const now = new Date().toLocaleString("hu-HU", {
+    timeZone: "Europe/Budapest",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  data["Dátum"] = now;
+
   console.log("📩  Received webhook:", JSON.stringify(data));
 
   try {
