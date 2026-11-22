@@ -66,7 +66,9 @@ app.post("/webhook", async (req, res) => {
   });
   data["Date"] = now;
 
-  console.log("📩  Received webhook:", JSON.stringify(data));
+  // Field names only: the values are personal data (names, e-mails, messages)
+  // and must not end up in the pm2 logs.
+  console.log(`📩  Received webhook: ${Object.keys(data).length} fields [${Object.keys(data).join(", ")}]`);
 
   try {
     const result = await appendRow(SHEET_ID, SHEET_NAME, data);
